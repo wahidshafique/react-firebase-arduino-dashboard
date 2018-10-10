@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import { Provider } from "react-redux";
-import createStore from "./store/createStore";
+import createStore from "./store/createFirestore";
 import "./App.css";
 import Led from "./components/Led";
 
