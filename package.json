@@ -1,0 +1,42 @@
+{
+  "name": "react-firebase-arduino-ticker",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "firebase": "^5.5.3",
+    "@google-cloud/firestore": "^0.17.0",
+    "http2": "^3.3.7",
+    "react": "^16.5.2",
+    "react-color": "^2.14.1",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-redux-firebase": "^2.1.8",
+    "react-scripts": "2.0.4",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.0",
+    "redux-firestore": "latest",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^3.4.10"
+  },
+  "scripts": {
+    "startx": "concurrently \"npm run startArd\" \"react-scripts start\" ",
+    "startArd": "cd arduino && node app",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.8.0",
+    "concurrently": "^4.0.1"
+  }
+}

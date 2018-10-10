@@ -1,0 +1,19 @@
+{
+  "name": "arduino-server",
+  "version": "1.0.0",
+  "description": "handles communication between the arduino and firebase",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/firestore": "^0.17.0",
+    "firebase": "^5.5.3",
+    "johnny-five": "^1.0.0"
+  },
+  "devDependencies": {
+    "serialport": "^7.0.2"
+  }
+}
