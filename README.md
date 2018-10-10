@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/wahidshafique/react-firebase-arduino-tests/master/example.png)
 
-Eexample of how to work with firebase, react, and the johnny-five library.
+Eexample of how to work with firebase, react/redux, and the johnny-five library.
 
 # Objectives
 
@@ -17,7 +17,7 @@ Install the dependencies and devDependencies for the root folder, and the arduin
 Plug in your arduino and either run
 
 ```sh
-$ yarn startArduino
+$ yarn startArd
 ```
 
 for just running up board
@@ -28,6 +28,12 @@ or if you want to see both the front end and serial communications in action, ru
 $ yarn startx
 ```
 
+otherwise the normal
+
+```sh
+$ yarn start
+```
+
 # Hardware installation
 
 ## RGB Pins
@@ -35,6 +41,14 @@ $ yarn startx
 ## Piezo
 
 ## LCD Display
+
+## Secrets
+
+Your firebase keys for the application should be inside of the firestoreSecret
+
+For the arduino, the file references a global_secrets folder, which should contain whatever key file your own firestore instance generates.
+
+Read the [quickstart](https://www.npmjs.com/package/@google-cloud/firestore#quickstart) for more information
 
 ## License
 

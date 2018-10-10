@@ -6,3 +6,5 @@ export default {
   storageBucket: "FILL",
   messagingSenderId: "FILL"
 };
+
+//please remove CHANGEME from this file afterwards
