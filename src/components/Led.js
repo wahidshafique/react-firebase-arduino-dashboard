@@ -42,18 +42,32 @@ const glowing = keyframes`
     filter: blur(25px)}
     `;
 
+const fadein = keyframes`
+  0% {
+    opacity: 0
+  }
+
+  50% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 100
+  }
+    `;
+
 const GlowDot = styled.div`
   z-index: -1;
   position: absolute;
-  left: 11%;
-  top: 11%;
   border-radius: 50%;
-  width: 85px;
-  height: 80px;
+  ${props => props.positioning};
+  padding: 5px;
+  width: 50%;
+  height: 100px;
 
   background: ${props => props.color};
   filter: blur(10px);
-  animation: ${glowing} 2000ms infinite alternate;
+  animation: ${glowing} 2000ms infinite alternate, ${fadein} 2s;
 `;
 
 const ArdStatusButton = styled.button`
@@ -61,12 +75,16 @@ const ArdStatusButton = styled.button`
 `;
 
 class Led extends Component {
-  static propTypes = {};
+  static propTypes = {
+    getBoardState: PropTypes.func.isRequired,
+    updateColor: PropTypes.func.isRequired
+  };
 
   constructor(props) {
     super(props);
     this.state = {
-      color: "#454545"
+      color: "#454545",
+      compDimen: {}
     };
   }
 
@@ -74,6 +92,29 @@ class Led extends Component {
     const bs = await this.props.getBoardState();
     const color = bs.data().ledColor;
     this.setState({ color: color });
+
+    this.updateCompDimensions();
+    window.addEventListener("resize", this.updateCompDimensions);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener("resize", this.updateCompDimensions);
+  };
+
+  updateCompDimensions = () => {
+    this.setState({
+      compDimen: {
+        width: this.compImg.width,
+        height: this.compImg.height
+      }
+    });
+  };
+
+  calculateLightPos = () => {
+    const left = `${this.state.compDimen.width / 4.5}px`;
+    const top = `${this.state.compDimen.height / 25}px`;
+
+    return `left: ${left}; top: ${top}`;
   };
 
   handleChangeComplete = color => {
@@ -83,10 +124,14 @@ class Led extends Component {
 
   render() {
     return (
-      <div className="two-thirds column card">
-        <div className="one-half column category">
-          <GlowDot color={this.state.color} />
+      <div className="one-half column card">
+        <div className="one-half column content-container">
+          <GlowDot
+            color={this.state.color}
+            positioning={this.calculateLightPos()}
+          />
           <img
+            ref={node => (this.compImg = node)}
             className="u-max-full-width"
             src={require("../assets/led.png")}
           />

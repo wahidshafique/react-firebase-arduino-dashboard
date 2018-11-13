@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import createStore from "./store/createFirestore";
 import "./App.css";
 import Led from "./components/Led";
+import Piezo from "./components/Piezo";
 
 const store = createStore();
 
@@ -20,12 +21,11 @@ class App extends Component {
               A sandbox for testing out arduino components
             </p>
           </div>
-
-          <div className="container">
-            <div className="row">
-              <Led />
-            </div>
+          <div>
+            <Led />
           </div>
+
+          <Piezo />
         </div>
       </Provider>
     );
